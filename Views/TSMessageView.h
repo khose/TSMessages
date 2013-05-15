@@ -11,6 +11,25 @@
 
 #define TSMessageViewAlpha 0.95
 
+#pragma mark - Design dictionary key values
+#define TSDesignBackgroundImageName  @"backgroundImageName"
+#define TSDesignBorderColor @"borderColor"
+#define TSDesignBorderHeight @"borderHeight"
+#define TSDesignButtonBackgroundImageName @"buttonBackgroundImageName"
+#define TSDesignButtonTitleTextColor @"buttonTitleTextColor"
+#define TSDesignButtonTitleShadowColor @"buttonTitleShadowColor"
+#define TSDesignButtonTitleShadowOffsetX @"buttonTitleShadowOffsetX"
+#define TSDesignButtonTitleShadowOffsetY @"buttonTitleShadowOffsetY"
+#define TSDesignContentFontSize @"contentFontSize"
+#define TSDesignContentTextColor @"contentTextColor"
+#define TSDesignImageName @"imageName"
+#define TSDesignShadowColor @"shadowColor"
+#define TSDesignShadowOffsetX @"shadowOffsetX"
+#define TSDesignShadowOffsetY @"shadowOffsetY"
+#define TSDesignTextColor @"textColor"
+#define TSDesignTitleFontSize @"titleFontSize"
+
+
 @interface TSMessageView : UIView
 
 /** The displayed title of this message */
@@ -49,6 +68,21 @@
          atPosition:(TSMessageNotificationPosition)position;
 
 /** Fades out this notification view */
+
 - (void)fadeMeOut;
+
+
+/**
+ * Method name:   setDefaultValuesForType
+ *
+ * Description:        Allows to setup a dictionary containing the values that will be used instead of the ones set into the design.json file. 
+ *                              If any value is NOT defined here, won't be used when building the MessageView.
+ * Parameters:        
+ *          @param  notificationType Type of notification that will be override
+ *          @param  defaultDictionary Dictionary containing the data that will be sued instead of the ones defined into the json file. The dictionary should be filled up using  TSDesign defines as keys
+ * Returns:                
+ *          @return    void
+ */
++ (void) setDefaultValuesForType:(TSMessageNotificationType)notificationType withDictionary:(NSDictionary*)defaultDictionary;
 
 @end

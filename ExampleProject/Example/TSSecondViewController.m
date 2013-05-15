@@ -8,6 +8,7 @@
 
 #import "TSSecondViewController.h"
 #import "TSMessage.h"
+#import "TSMessageView.h"
 
 #define TSSecondViewControllerLongDuration 10.0
 
@@ -22,6 +23,9 @@
                                          nil);
     
     CGFloat duration = (self.longDurationToggle.on ? TSSecondViewControllerLongDuration : 0.0);
+    
+    
+    [TSMessageView setDefaultValuesForType:TSMessageNotificationTypeError withDictionary:[NSDictionary dictionaryWithObjectsAndKeys:@(20),TSDesignTitleFontSize,  @"NotificationBackgroundMessage.png" , TSDesignBackgroundImageName , @"#000000", TSDesignBorderColor ,@"NotificationBackgroundErrorIcon.png", TSDesignImageName,  @"#FFFFFF", TSDesignTextColor, nil]];
     
     [TSMessage showNotificationInViewController:self
                                       withTitle:notificationTitle

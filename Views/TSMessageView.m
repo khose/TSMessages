@@ -15,6 +15,11 @@
 
 static NSDictionary *notificationDesign;
 
+static NSDictionary *successCustomDesign;
+static NSDictionary *messageCustomDesign;
+static NSDictionary *warningCustomDesign;
+static NSDictionary *errorCustomDesign;
+
 @interface TSMessageView ()
 
 @property (nonatomic, strong) NSString *title;
@@ -76,26 +81,47 @@ static NSDictionary *notificationDesign;
         CGFloat screenWidth = self.viewController.view.frame.size.width;
         NSDictionary *current;
         NSString *currentString;
+        
         switch (notificationType)
         {
             case TSMessageNotificationTypeMessage:
             {
-                currentString = @"message";
+                if (messageCustomDesign) {
+                    current =  messageCustomDesign;
+                }
+                else
+                    currentString = @"message";
+                
                 break;
             }
             case TSMessageNotificationTypeError:
             {
-                currentString = @"error";
+                if (errorCustomDesign) {
+                    current =  errorCustomDesign;
+                }
+                else
+                    currentString = @"error";
+                
                 break;
             }
             case TSMessageNotificationTypeSuccess:
             {
-                currentString = @"success";
+                if (successCustomDesign) {
+                    current =  successCustomDesign;
+                }
+                else
+                    currentString = @"success";
+                
                 break;
             }
             case TSMessageNotificationTypeWarning:
             {
-                currentString = @"warning";
+                if (warningCustomDesign) {
+                    current =  warningCustomDesign;
+                }
+                else
+                    currentString = @"warning";
+                
                 break;
             }
                 
@@ -103,7 +129,8 @@ static NSDictionary *notificationDesign;
                 break;
         }
         
-        current = [notificationDesign valueForKey:currentString];
+        if(currentString)
+            current = [notificationDesign valueForKey:currentString];
         
         self.alpha = 0.0;
         
@@ -131,10 +158,17 @@ static NSDictionary *notificationDesign;
         [self.titleLabel setText:title];
         [self.titleLabel setTextColor:fontColor];
         [self.titleLabel setBackgroundColor:[UIColor clearColor]];
-        [self.titleLabel setFont:[UIFont boldSystemFontOfSize:[[current valueForKey:@"titleFontSize"] floatValue]]];
-        [self.titleLabel setShadowColor:[UIColor colorWithHexString:[current valueForKey:@"shadowColor"] alpha:1.0]];
-        [self.titleLabel setShadowOffset:CGSizeMake([[current valueForKey:@"shadowOffsetX"] floatValue],
+        
+        if([current valueForKey:@"titleFontSize"])
+            [self.titleLabel setFont:[UIFont boldSystemFontOfSize:[[current valueForKey:@"titleFontSize"] floatValue]]];
+        
+        if([[current valueForKey:@"shadowColor"] length] )
+        {
+            [self.titleLabel setShadowColor:[UIColor colorWithHexString:[current valueForKey:@"shadowColor"] alpha:1.0]];
+            [self.titleLabel setShadowOffset:CGSizeMake([[current valueForKey:@"shadowOffsetX"] floatValue],
                                                     [[current valueForKey:@"shadowOffsetY"] floatValue])];
+        }
+        
         self.titleLabel.numberOfLines = 0;
         self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
         [self addSubview:self.titleLabel];
@@ -145,11 +179,16 @@ static NSDictionary *notificationDesign;
             _contentLabel = [[UILabel alloc] init];
             [self.contentLabel setText:content];
             
-            UIColor *contentTextColor = [UIColor colorWithHexString:[current valueForKey:@"contentTextColor"] alpha:1.0];
-            if (!contentTextColor) {
-                contentTextColor = fontColor;
+            if([[current valueForKey:@"contentTextColor"] length])
+            {
+                UIColor *contentTextColor = [UIColor colorWithHexString:[current valueForKey:@"contentTextColor"] alpha:1.0];
+                if (!contentTextColor) {
+                    contentTextColor = fontColor;
+                }
+                [self.contentLabel setTextColor:contentTextColor];
             }
-            [self.contentLabel setTextColor:contentTextColor];
+            
+
             [self.contentLabel setBackgroundColor:[UIColor clearColor]];
             [self.contentLabel setFont:[UIFont systemFontOfSize:[[current valueForKey:@"contentFontSize"] floatValue]]];
             [self.contentLabel setShadowColor:self.titleLabel.shadowColor];
@@ -351,6 +390,39 @@ static NSDictionary *notificationDesign;
         [[TSMessage sharedMessage] performSelector:@selector(fadeOutNotification:)
                                         withObject:self];
     });
+}
+
+
+
++ (void) setDefaultValuesForType:(TSMessageNotificationType)notificationType withDictionary:(NSDictionary*)defaultDictionary
+{
+
+    switch (notificationType)
+    {
+        case TSMessageNotificationTypeMessage:
+        {
+            messageCustomDesign = defaultDictionary;
+            break;
+        }
+        case TSMessageNotificationTypeError:
+        {
+            errorCustomDesign = defaultDictionary;
+            break;
+        }
+        case TSMessageNotificationTypeSuccess:
+        {
+            successCustomDesign = defaultDictionary;
+            break;
+        }
+        case TSMessageNotificationTypeWarning:
+        {
+            warningCustomDesign = defaultDictionary;
+            break;
+        }
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark - UIButton target
