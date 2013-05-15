@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		190E3E08C9F54F1F948DC3AA /* TSMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 98F1E132E61E477D8D7E7CCF /* TSMessage.h */; };
-		24A5A7331743C33C006560F5 /* UIImage+MHUIColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 24A5A7311743C33C006560F5 /* UIImage+MHUIColor.h */; };
-		24A5A7341743C33C006560F5 /* UIImage+MHUIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A5A7321743C33C006560F5 /* UIImage+MHUIColor.m */; };
+		24A5A7371743CE05006560F5 /* UIImage+MHUIColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 24A5A7351743CE04006560F5 /* UIImage+MHUIColor.h */; };
+		24A5A7381743CE05006560F5 /* UIImage+MHUIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A5A7361743CE04006560F5 /* UIImage+MHUIColor.m */; };
 		25776DD66C294BDDA31DC4A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78654F00A2A4465BC55E562 /* Foundation.framework */; };
 		4165ECB043994DE8A88D4C59 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9D2A0A2F694DFF9C40E14C /* Pods-dummy.m */; };
 		4EAF17012C5C45118306A0CF /* UIColor+MLColorAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = CD96506341A44C58A9BBB480 /* UIColor+MLColorAdditions.h */; };
@@ -26,8 +26,8 @@
 		23BCB7F9F31841109F00457F /* UIColor+MLColorAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+MLColorAdditions.m"; path = "../../Classes/UIColorAdditions/UIColor+MLColorAdditions.m"; sourceTree = SOURCE_ROOT; };
 		24A5A72F1743B951006560F5 /* icon_notification.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_notification.png; path = ../../Resources/Images/icon_notification.png; sourceTree = "<group>"; };
 		24A5A7301743B951006560F5 /* icon_notification@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_notification@2x.png"; path = "../../Resources/Images/icon_notification@2x.png"; sourceTree = "<group>"; };
-		24A5A7311743C33C006560F5 /* UIImage+MHUIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+MHUIColor.h"; path = "../../UIImage+TMCUIColor/UIImage+MHUIColor.h"; sourceTree = "<group>"; };
-		24A5A7321743C33C006560F5 /* UIImage+MHUIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MHUIColor.m"; path = "../../UIImage+TMCUIColor/UIImage+MHUIColor.m"; sourceTree = "<group>"; };
+		24A5A7351743CE04006560F5 /* UIImage+MHUIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+MHUIColor.h"; path = "../../Classes/UIImage+MHUIColor/UIImage+MHUIColor.h"; sourceTree = "<group>"; };
+		24A5A7361743CE04006560F5 /* UIImage+MHUIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MHUIColor.m"; path = "../../Classes/UIImage+MHUIColor/UIImage+MHUIColor.m"; sourceTree = "<group>"; };
 		2E7786FC5883451DA3977016 /* NotificationBackgroundWarning@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "NotificationBackgroundWarning@2x.png"; path = "../../Resources/Images/NotificationBackgroundWarning@2x.png"; sourceTree = SOURCE_ROOT; };
 		32B487D2ECC1438788A90F9C /* NotificationBackgroundSuccessIcon.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = NotificationBackgroundSuccessIcon.png; path = ../../Resources/Images/NotificationBackgroundSuccessIcon.png; sourceTree = SOURCE_ROOT; };
 		3872CBD26596461C9406A0DE /* NotificationBackgroundWarning.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = NotificationBackgroundWarning.png; path = ../../Resources/Images/NotificationBackgroundWarning.png; sourceTree = SOURCE_ROOT; };
@@ -112,14 +112,14 @@
 		AEAA8E0A5B4346D2AFD04D31 /* TSMessages */ = {
 			isa = PBXGroup;
 			children = (
+				24A5A7351743CE04006560F5 /* UIImage+MHUIColor.h */,
+				24A5A7361743CE04006560F5 /* UIImage+MHUIColor.m */,
 				98F1E132E61E477D8D7E7CCF /* TSMessage.h */,
 				BE3D5749412E43DDA58DFE70 /* TSMessage.m */,
 				CD96506341A44C58A9BBB480 /* UIColor+MLColorAdditions.h */,
 				23BCB7F9F31841109F00457F /* UIColor+MLColorAdditions.m */,
 				82DF75603C8C491CA1A4E7F9 /* TSMessageView.h */,
 				A435BAB089504DC298A44BE2 /* TSMessageView.m */,
-				24A5A7311743C33C006560F5 /* UIImage+MHUIColor.h */,
-				24A5A7321743C33C006560F5 /* UIImage+MHUIColor.m */,
 			);
 			name = TSMessages;
 			sourceTree = "<group>";
@@ -188,7 +188,7 @@
 				190E3E08C9F54F1F948DC3AA /* TSMessage.h in Headers */,
 				4EAF17012C5C45118306A0CF /* UIColor+MLColorAdditions.h in Headers */,
 				B6533839521A4360A82AF014 /* TSMessageView.h in Headers */,
-				24A5A7331743C33C006560F5 /* UIImage+MHUIColor.h in Headers */,
+				24A5A7371743CE05006560F5 /* UIImage+MHUIColor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,7 +246,7 @@
 				7FFDDDD4F9554BC189B53086 /* UIColor+MLColorAdditions.m in Sources */,
 				C625855948484AE7AEA43C64 /* TSMessageView.m in Sources */,
 				4165ECB043994DE8A88D4C59 /* Pods-dummy.m in Sources */,
-				24A5A7341743C33C006560F5 /* UIImage+MHUIColor.m in Sources */,
+				24A5A7381743CE05006560F5 /* UIImage+MHUIColor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
