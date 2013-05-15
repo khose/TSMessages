@@ -8,6 +8,7 @@
 
 #import "TSMessageView.h"
 #import "UIColor+MLColorAdditions.h"
+#import "UIImage+MHUIColor.h"
 
 #define TSMessageViewPadding 15.0
 
@@ -141,14 +142,23 @@ static NSDictionary *errorCustomDesign;
         }
         
         // add background image here
-        UIImage *backgroundImage = [[UIImage imageNamed:[current valueForKey:@"backgroundImageName"]] stretchableImageWithLeftCapWidth:0.0 topCapHeight:0.0];
+        NSString *bgImageName = [current valueForKey:@"backgroundImageName"];
+        UIImage *backgroundImage;
+        if([bgImageName length])
+        {
+            if ([bgImageName hasPrefix:@"#"] ) {
+                backgroundImage = [UIImage imageWithColorString:bgImageName];
+            }
+            else
+                backgroundImage = [[UIImage imageNamed:[current valueForKey:@"backgroundImageName"]] resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)];
+        }
+        
         _backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImage];
         self.backgroundImageView.autoresizingMask = (UIViewAutoresizingFlexibleWidth);
         [self addSubview:self.backgroundImageView];
         
         UIColor *fontColor = [UIColor colorWithHexString:[current valueForKey:@"textColor"]
                                                    alpha:1.0];
-        
         
         self.textSpaceLeft = 2 * TSMessageViewPadding;
         if (image) self.textSpaceLeft += image.size.width + 2 * TSMessageViewPadding;
@@ -206,6 +216,13 @@ static NSDictionary *errorCustomDesign;
                                                   TSMessageViewPadding,
                                                   image.size.width,
                                                   image.size.height);
+            
+            if ([current valueForKey:@"imageBackgroundColor"]) {
+                [self.iconImageView setBackgroundColor:[UIColor colorWithHexString:[current valueForKey:@"imageBackgroundColor"] alpha:1.0]];
+            }
+            else
+                [self.iconImageView setBackgroundColor:[UIColor clearColor]];
+            
             [self addSubview:self.iconImageView];
         }
         

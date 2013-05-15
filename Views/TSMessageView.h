@@ -23,6 +23,7 @@
 #define TSDesignContentFontSize @"contentFontSize"
 #define TSDesignContentTextColor @"contentTextColor"
 #define TSDesignImageName @"imageName"
+#define TSDesignImageBackgroundColor @"imageBackgroundColor"
 #define TSDesignShadowColor @"shadowColor"
 #define TSDesignShadowOffsetX @"shadowOffsetX"
 #define TSDesignShadowOffsetY @"shadowOffsetY"
