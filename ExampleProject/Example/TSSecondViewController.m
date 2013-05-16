@@ -29,7 +29,7 @@
     
     [TSMessage showNotificationInViewController:self
                                       withTitle:notificationTitle
-                                    withMessage:notificationDescription
+                                    withMessage:nil
                                        withType:TSMessageNotificationTypeError
                                    withDuration:duration
                                    withCallback:^{

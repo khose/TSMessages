@@ -197,10 +197,13 @@ static NSDictionary *errorCustomDesign;
                 }
                 [self.contentLabel setTextColor:contentTextColor];
             }
-            
+            else
+                [self.contentLabel setTextColor:[UIColor whiteColor]];
 
             [self.contentLabel setBackgroundColor:[UIColor clearColor]];
-            [self.contentLabel setFont:[UIFont systemFontOfSize:[[current valueForKey:@"contentFontSize"] floatValue]]];
+            if([current valueForKey:@"contentFontSize"])
+                [self.contentLabel setFont:[UIFont systemFontOfSize:[[current valueForKey:@"contentFontSize"] floatValue]]];
+            
             [self.contentLabel setShadowColor:self.titleLabel.shadowColor];
             [self.contentLabel setShadowOffset:self.titleLabel.shadowOffset];
             self.contentLabel.lineBreakMode = self.titleLabel.lineBreakMode;
@@ -345,6 +348,8 @@ static NSDictionary *errorCustomDesign;
         if (self.iconImageView.frame.origin.y + self.iconImageView.frame.size.height + TSMessageViewPadding > currentHeight)
         {
             currentHeight = self.iconImageView.frame.origin.y + self.iconImageView.frame.size.height + TSMessageViewPadding;
+            if (![self.content length])
+                self.titleLabel.center = CGPointMake([self.titleLabel center].x, round(currentHeight / 2.0));
         }
         else
         {
